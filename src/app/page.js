@@ -1,103 +1,143 @@
-import Image from "next/image";
+export default function WeatherUI() {
+  const forecastIcons = {
+    Cloudy: (
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 15a4 4 0 014-4h1a5 5 0 0110 0h1a4 4 0 010 8H7a4 4 0 01-4-4z" />
+    ),
+    Rainy: (
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v4h16V4M4 8l4 4H6v4h2l-4 4" />
+    ),
+    Clear: (
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2m6.364 1.636l-1.414 1.414M21 12h-2m-1.636 6.364l-1.414-1.414M12 21v-2m-6.364-1.636l1.414-1.414M3 12h2m1.636-6.364l1.414 1.414" />
+    ),
+  };
 
-export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <div className="min-h-screen bg-black text-white font-sans p-4 flex flex-col items-center">
+      {/* Search Bar */}
+      <div className="w-full max-w-md border-b border-gray-600 flex items-center mb-6">
+        <input
+          type="text"
+          placeholder="Insert your city name"
+          className="w-full bg-black text-gray-400 placeholder-gray-500 py-2 px-4 outline-none"
         />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+        <svg
+          className="w-5 h-5 text-gray-400 mr-2"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 18a7.5 7.5 0 006.15-3.35z"
+          />
+        </svg>
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Current Weather */}
+      <div className="w-full max-w-md mb-6">
+        <div className="flex justify-between items-start">
+          <div className="flex items-start gap-4">
+            <div>
+              <div className="text-sm text-gray-400">Monday</div>
+              <div className="text-lg font-semibold">04 September</div>
+            </div>
+            <div className="text-2xl font-bold">Jakarta</div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="border-t border-gray-600 my-4"></div>
+        <div className="flex items-center justify-start mt-2">
+          <div>
+            <div className="text-lg text-gray-300">Cloudy</div>
+            <div className="text-6xl font-bold">29°</div>
+          </div>
+          <svg
+            className="w-16 h-16 ml-4"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18H5a3 3 0 010-6h.1a5 5 0 0110-1 4.5 4.5 0 012.9 8H6z"
+            />
+          </svg>
+        </div>
+      </div>
+
+      {/* Weather Details */}
+      <div className="w-full max-w-md border-t border-gray-600 pt-4 grid grid-cols-2 gap-4 text-sm">
+        {[
+          {
+            label: 'Wind',
+            value: '6.69/ms',
+            icon: (
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 19V6m0 0l-3 3m3-3l3 3" />
+            ),
+          },
+          {
+            label: 'Humidity',
+            value: '70%',
+            icon: (
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c1.5-2 4.5-2 6 0s1.5 5-1 7c-2 1.5-3 2-5 4-2-2-3-2.5-5-4-2.5-2-2.5-5-1-7s4.5-2 6 0z" />
+            ),
+          },
+          {
+            label: 'Clouds',
+            value: '40%',
+            icon: (
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 15a4 4 0 014-4h1a5 5 0 0110 0h1a4 4 0 010 8H7a4 4 0 01-4-4z" />
+            ),
+          },
+          {
+            label: 'Real Feel',
+            value: '40%',
+            icon: (
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2m6.364 1.636l-1.414 1.414M21 12h-2m-1.636 6.364l-1.414-1.414M12 21v-2m-6.364-1.636l1.414-1.414M3 12h2m1.636-6.364l1.414 1.414" />
+            ),
+          },
+        ].map((item, idx) => (
+          <div key={idx} className="flex gap-2 w-full">
+            <div className="flex flex-col items-center">
+              <svg className="w-5 h-5 text-gray-400 mb-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                {item.icon}
+              </svg>
+            </div>
+            <div className="flex flex-col">
+              <div className="text-gray-400 leading-tight">{item.label}</div>
+              <div className="font-semibold leading-tight">{item.value}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Weekly Forecast */}
+      <div className="w-full max-w-md mt-6">
+        <div className="text-sm text-gray-400 mb-2">Weekly Forecast</div>
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 text-left text-xs">
+          {[
+            { day: 'Tuesday', temp: '26°', type: 'Cloudy' },
+            { day: 'Wednesday', temp: '14°', type: 'Rainy' },
+            { day: 'Thursday', temp: '25°', type: 'Cloudy' },
+            { day: 'Friday', temp: '32°', type: 'Clear' },
+            { day: 'Saturday', temp: '22°', type: 'Cloudy' },
+          ].map((item, idx) => (
+            <div key={idx} className="bg-gray-900 p-2 rounded-md flex flex-col items-start">
+              <div className="text-gray-300 text-xs">{item.day}</div>
+              <div className="flex items-center gap-1 text-base font-semibold">
+                <svg className="w-4 h-4 text-yellow-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  {forecastIcons[item.type]}
+                </svg>
+                {item.temp}
+              </div>
+              <div className="text-gray-400 text-xs">{item.type}</div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
